@@ -1,7 +1,7 @@
-#Project: Resource Maintenance and Management
-Author: Rajesh Kumar Chukka
-Description: IGNOU MCA 4th Semester project
-Enrolment NO.: 163002238
+# Project: Resource Maintenance and Management
+### Author: Rajesh Kumar Chukka
+### Description: IGNOU MCA 4th Semester project
+### Enrolment NO.: 163002238
 
 
 ## Getting Started
@@ -46,6 +46,7 @@ Open command-line/bash and type 'node -v' to confirm that node is running on sys
 ```
 * Upload the files to server location, create mysql database and dump the 'database.sql' file available on root folder
 
+* Open file: /app/config/config.json and update the database config settings
 
 * on command-line, go to the the project root folder and run the command
 
@@ -53,7 +54,7 @@ $ node server
 
 * Go to browser and run the url: http://127.0.0.1:5000
 
-* Application is ready to use
+* Application is ready to use on port 5000 by default, you can change this port on server.js
 ```
 
 
@@ -65,9 +66,9 @@ $ node server
 
 ## License
 
-This project is licensed under the MIT License
+This project is licensed under the GNU License
 
 ## Acknowledgments
 
-Thanks to my project counseller and co-ordinator for supporting to accomplish this project.
+Thanks to my project counsellor and co-ordinator for the guidance to accomplish this project.
 
