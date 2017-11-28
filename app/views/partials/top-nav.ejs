@@ -1,0 +1,48 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="sidebar-pusher">
+            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic push-sidebar">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+        <div class="logo-box">
+            <a href="/dashboard" class="logo-text"><span>RMM</span></a>
+        </div><!-- Logo Box -->
+        <div class="search-button">
+            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic show-search"><i class="fa fa-search"></i></a>
+        </div>
+        <div class="topmenu-outer">
+            <div class="top-menu">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>		
+                        <a href="javascript:void(0);" class="waves-effect waves-button waves-classic sidebar-toggle"><i class="fa fa-bars"></i></a>
+                    </li>
+                    <li>
+                        <a href="#cd-nav" class="waves-effect waves-button waves-classic cd-nav-trigger"><i class="fa fa-diamond"></i></a>
+                    </li>
+                    <li>		
+                        <a href="javascript:void(0);" class="waves-effect waves-button waves-classic toggle-fullscreen"><i class="fa fa-expand"></i></a>
+                    </li>
+                    
+                </ul>
+                <ul class="nav navbar-nav" align="center" style="display: inline-block;margin: 0 auto;width:70%">
+                    <h2>Resource Maintenance and Management</h2>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
+                            <span class="user-name"><%= user.name %><i class="fa fa-angle-down"></i></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-list" role="menu">
+                            <!--<li role="presentation"><a href="profile.html"><i class="fa fa-user"></i>Profile</a></li>                            
+                            <li role="presentation" class="divider"></li>  -->                          
+                            <li role="presentation"><a href="/logout"><i class="fa fa-sign-out m-r-xs"></i>Log out</a></li>
+                        </ul>
+                    </li>
+
+                </ul><!-- Nav -->
+            </div><!-- Top Menu -->
+        </div>
+    </div>
+</div>

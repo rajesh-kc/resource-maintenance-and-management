@@ -1,0 +1,55 @@
+<div class="page-sidebar sidebar">
+    <div class="page-sidebar-inner slimscroll">
+        <div class="sidebar-header">
+            <div class="sidebar-profile">
+
+                    <div class="sidebar-profile-details">
+                        <span><%= user.name %><br><small><%= user.role %></small></span>
+                    </div>
+
+            </div>
+        </div>
+        <ul class="menu accordion-menu">
+            <li class="active"><a href="/dashboard" class="waves-effect waves-button"><span class="menu-icon fa fa-home"></span><p>Dashboard</p></a></li>
+            <li class="droplink"><a href="/users" class="waves-effect waves-button"><span class="menu-icon fa fa-group"></span><p>Users</p><span class="arrow"></span></a>
+                <ul class="sub-menu">
+                    <li><a href="/users">All Users</a></li>
+                    <li><a href="/users/manage">Add Users</a></li>
+                </ul>
+            </li>
+           <li class="droplink"><a href="/resources" class="waves-effect waves-button"><span class="menu-icon fa fa-list"></span><p>Resources</p><span class="arrow"></span></a>
+                <ul class="sub-menu">
+                    <li><a href="/resources">All Resources</a></li>
+                    <li><a href="/resources/manage">Manage</a></li>
+                </ul>
+            </li>
+            <li class="droplink"><a href="/maintenance/agencies" class="waves-effect waves-button"><span class="menu-icon fa fa-building"></span><p>Maintenance<br/>Agencies</p><span class="arrow"></span></a>
+                <ul class="sub-menu">
+                    <li><a href="/maintenance/agencies">All Agencies</a></li>
+                    <li><a href="/maintenance/agencies/manage">Manage</a></li>
+                </ul>
+            </li>
+            <li class="droplink"><a href="/maintenance/visits" class="waves-effect waves-button"><span class="menu-icon fa fa-suitcase"></span><p>Maintenance<br/>Visits</p><span class="arrow"></span></a>
+                <ul class="sub-menu">
+                    <li><a href="/maintenance/visits">All Visits</a></li>
+                    <li><a href="/maintenance/visits/manage">Manage</a></li>                    
+                </ul>
+            </li>
+            <li class="droplink"><a href="/services" class="waves-effect waves-button"><span class="menu-icon fa fa-cubes"></span><p>Services</p><span class="arrow"></span></a>
+                <ul class="sub-menu">
+                    <li><a href="/services">All Services</a></li>
+                    <li><a href="/services/manage">Manage</a></li>
+                </ul>
+            </li>
+            <li class="droplink"><a href="/sales" class="waves-effect waves-button"><span class="menu-icon fa fa-cart-plus"></span><p>Sales</p><span class="arrow"></span></a>
+                <ul class="sub-menu">
+                    <li><a href="/sales">All Sales</a></li>
+                    <li><a href="/sales/manage">Manage</a></li>
+                </ul>
+            </li>
+
+
+
+        </ul>
+    </div><!-- Page Sidebar Inner -->
+</div>

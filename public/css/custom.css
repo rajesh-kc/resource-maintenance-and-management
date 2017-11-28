@@ -1,0 +1,26 @@
+/* Write your custom CSS here */
+
+.center .panel .panel-heading .panel-title {
+	float: none;
+}
+
+ul.error {
+	color: red;
+	font-size: 12px;
+	list-style-type: none;
+}
+
+ul.error .caps {
+	text-transform: capitalize;
+}
+
+.success {
+	color: green;
+	font-size: 12px;
+}
+
+@media screen and (min-width: 1200px){
+    #main-wrapper .wrapper_container {
+        margin-top: 75px;
+    }
+}

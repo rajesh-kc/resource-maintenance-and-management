@@ -1,0 +1,27 @@
+{
+  "name": "resource-maintenance-and-management",
+  "version": "1.0.0",
+  "description": "Resource maintenance and management, built using Nodejs, Express, Sequelize and MySQL",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rajesh Kumar Chukka",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.0",
+    "express-validator": "^4.2.1",
+    "morgan": "^1.9.0",
+    "mysql": "^2.13.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "sequelize": "^3.30.1"
+  }
+}

@@ -1,0 +1,282 @@
+<!-- views/dashboard.ejs -->
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Title -->
+        <title>Manage Sales | RMM</title>
+
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta charset="UTF-8">
+        <meta name="description" content="RMM Sales Manage" />
+        <meta name="keywords" content="RMM Sales" />
+        <meta name="author" content="Rajesh Kumar Chukka" />
+
+        <!-- Styles -->
+        <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>-->
+        <link href="/public/css/pace-theme-flash.css" rel="stylesheet"/>
+        <link href="/public/css/uniform.default.min.css" rel="stylesheet"/>
+        <link href="/public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/menu_cornerbox.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/waves.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/switchery.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/3d-bold-navigation-style.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/slidepushmenus-component.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/weather-icons.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/MetroJs.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/toastr.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/datepicker3.css" rel="stylesheet" type="text/css"/>
+
+        <link href="/public/css/jquery.datatables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/jquery.datatables_themeroller.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Theme Styles -->
+        <link href="/public/css/modern.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/green.css" class="theme-color" rel="stylesheet" type="text/css"/>
+        <link href="/public/css/custom.css" rel="stylesheet" type="text/css"/>
+
+        <!--<script src="/public/js/modernizr.js"></script>-->
+        <script src="/public/js/snap.svg-min.js"></script>
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body class="page-header-fixed">
+        <div class="overlay"></div>
+        
+        <main class="page-content content-wrap">
+
+            <% include ../partials/top-nav %>
+            <!-- Navbar -->
+            <% include ../partials/left-nav %>
+            <!-- Page Sidebar -->
+            <div class="page-inner">
+
+                <div class="page-title">
+                    <h3>Sales</h3>
+                    <div class="page-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li><a href="/dashboard">Dashboard</a></li>
+                            <% if(post_status == 'add'){ %>
+                                <li class="active">Create Sale</li>
+                            <% } else { %>
+                                <li class="active">Update Sale</li>
+                            <% } %>
+                        </ol>
+                    </div>
+                </div>
+                <div class="main-wrapper center">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-white">
+                                <div class="panel-heading clearfix">
+                                    <% if(post_status == 'add'){ %>
+                                        <h2 class="panel-title " align="center">Add new sale info</h2>
+                                    <% } else { %>
+                                        <h2 class="panel-title " align="center">Update sale info</h2>
+                                    <% } %>
+
+                                </div>
+                                <br/>
+                                <div class="panel-body">
+                                    <div class="col-md-10 col-md-offset-1">
+
+                                        <% if(typeof sale_info != 'undefined'){
+                                                var id = sale_info.id;
+                                                var service_id = sale_info.service_id;
+                                                var duration = sale_info.duration;
+                                                var amount = sale_info.amount;
+                                                var order_date = sale_info.order_date;
+
+                                                //console.log(JSON.stringify(resource_info));
+                                             } else {
+                                                var id = '';
+                                                var service_id = '';
+                                                var duration = '';
+                                                var amount = '';
+                                                var order_date = '';
+                                             } %>
+                                        <% if(typeof errors != 'undefined'){ %>
+
+                                        <ul class="error">
+                                            <%  for(var key in errors){ %>
+                                            <li><strong class="caps"><%= errors[key] %></strong></li>
+                                            <% }; %>
+                                        </ul>
+                                        <% } %>
+
+                                    </div>
+                                    <% if(typeof services_list != undefined){ %>
+                                        <script type="text/javascript">
+                                            var services_list = <%- JSON.stringify(services_list) %>
+                                        </script>
+                                    <% } %>
+                                    <form method="post" action="/sales/manage" class="form-horizontal col-md-8 col-md-offset-1">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="service_id" class="col-sm-3 control-label">Service Name</label>
+                                                    <div class="col-sm-9">
+                                                        <select class="form-control" id="service_id" name="service_id" placeholder="Select Service" required>
+                                                            <option value="">Select Service</option>
+                                                            <% if(typeof services_list != undefined){
+
+                                                                services_list.forEach(function(service){
+                                                                    var selected = (service_id == service.id)?"selected":'';
+                                                                    %>
+                                                                <option <%= selected %> value="<%= service.id %>"><%= service.service_name %></option>
+                                                               <% });
+                                                            } %>
+
+                                                        </select>                                   
+                                                        <% if(id){ %>
+                                                            <input type="hidden" id="id" name="id" value="<%= id %>" />
+                                                            <input type="hidden" id="update" name="update" value="update" />
+
+                                                        <% } %>
+                                                        <p class="help-block"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="duration" class="col-sm-3 control-label">Duration</label>
+                                                    <div class="col-sm-9">
+                                                        
+                                                        <select class="form-control" id="duration" name="duration" placeholder="Select duration" required>
+                                                            <option value="">Select Duration</option>
+                                                            
+                                                            <% if(typeof services_list != undefined){
+
+                                                                services_list.forEach(function(service){                              
+                                                                    %>
+                                                                    <% if(service_id == service.id){ 
+                                                                        for(var x=1;x<=5;x++){ 
+                                                                            var selected = (duration == x*service.duration)?"selected":'';
+                                                                            %>
+                                                                            <option <%= selected %> value="<%= x*service.duration %>"><%= x+' * '+service.duration+' = '+x*service.duration %> day(s)</option>
+                                                                      <% }
+                                                                     } %>
+                                                                
+                                                               <% });
+                                                            } %>
+                                                        </select>
+                                                        <p class="help-block"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="amount" class="col-sm-3 control-label">Total Amount</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="text" class="form-control" id="amount" name="amount" placeholder="Enter the amount" required value="<%= amount %>" readonly />
+                                                        <p class="help-block"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="order_date" class="col-sm-3 control-label">Order date</label>
+                                                    <div class="col-sm-9">
+                                                        <%
+                                                        var formatDate = function(date) {
+                                                         var year = date.getFullYear();
+                                                            var month = date.getMonth()+1;
+                                                            var day = date.getDate();
+
+                                                            if (day < 10) {
+                                                              day = '0' + day;
+                                                            }
+                                                            if (month < 10) {
+                                                              month = '0' + month;
+                                                            }
+                                                            return year + '-' + month + '-' + day
+                                                        }
+
+                                                        if(order_date){
+                                                              var date = new Date(order_date);
+                                                              date_str = formatDate(date);
+                                                          } else {
+                                                            date_str = '';
+                                                          }
+
+                                                         %>
+                                                        <input type="text" class="form-control date-picker" id="order_date" name="order_date" placeholder="Enter date of sale" required value="<%= date_str  %>" />
+                                                        <p class="help-block"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        
+                                        
+                                        
+
+                                        <div class="col-sm-offset-11 col-sm-1">
+                                            <div  class="form-group">
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Wrapper -->
+                <div class="page-footer">
+                    <p class="no-s">2015 &copy; Modern by Steelcoders.</p>
+                </div>
+            </div><!-- Page Inner -->
+        </main><!-- Page Content -->
+        
+
+
+        <!-- Javascripts -->
+        <script src="/public/js/jquery-2.1.4.min.js"></script>
+        <script src="/public/js/jquery-ui.min.js"></script>
+        <script src="/public/js/pace.min.js"></script>
+        <script src="/public/js/jquery.blockui.js"></script>
+        <script src="/public/js/bootstrap.min.js"></script>
+        <script src="/public/js/jquery.slimscroll.min.js"></script>
+        <script src="/public/js/switchery.min.js"></script>
+        <script src="/public/js/jquery.uniform.min.js"></script>
+        <script src="/public/js/offcanvasmenueffects-classie.js"></script>
+        <script src="/public/js/offcanvasmenueffects-main.js"></script>
+        <script src="/public/js/waves.min.js"></script>
+        <script src="/public/js/3d-bold-navigation-main.js"></script>
+        <script src="/public/js/jquery.waypoints.min.js"></script>
+        <script src="/public/js/jquery.counterup.min.js"></script>
+        <script src="/public/js/toastr.min.js"></script>
+        <!-- <script src="/public/js/jquery.flot.min.js"></script>
+        <script src="/public/js/jquery.flot.time.min.js"></script>
+        <script src="/public/js/jquery.flot.symbol.min.js"></script>
+        <script src="/public/js/jquery.flot.resize.min.js"></script>
+        <script src="/public/js/jquery.flot.tooltip.min.js"></script> -->
+        <!-- <script src="/public/js/curvedLines.js"></script> -->
+        <script src="/public/js/MetroJs.min.js"></script>
+        <script src="/public/js/modern.min.js"></script>
+        <!-- <script src="/public/js/dashboard.js"></script> -->
+        <script src="/public/js/bootstrap-datepicker.js"></script>
+        <script src="/public/js/jquery.datatables.min.js"></script>
+        <script src="/public/js/custom.js"></script>
+
+    </body>
+</html>
